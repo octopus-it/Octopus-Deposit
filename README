@@ -1,0 +1,8 @@
+This is ALPHA and considered VERY UNSTABLE!!!!
+
+The project is to create a Deposit Module for Magento.
+
+Currently there is a little bit of code still in the Magento Core which needs to be repackaged into the module. Tried using event listeners but have been unable to setPrice data to the quote table. ANother way would be to override the Model - but would perfer to use a listener.
+
+Andrew
+andy@octopus-it.com
