@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+        <Octopus_Deposit>
+            <version>0.1.4</version>
+        </Octopus_Deposit>
+    </modules>
+
+	
+  <global>
+    <!--<models>
+        <octopusdeposit>
+          <class>Octopus_Deposit_Model</class>
+        </octopusdeposit>		
+    </models>-->
+	<models>
+		<deposit>
+			<class>Octopus_Deposit_Model</class>
+		</deposit>
+    </models>
+	
+	<!--<resources>
+		<deposit_setup>
+			<setup>
+				<module>Octopus_Deposit</module>-->
+				<!-- 
+					Points to
+					app/code/local/Octopus/EntityExtender/sql/entityextender_setup/mysql4-install-0.1.0.php
+					
+					Sets mysql4-install-0.1.0.php to be a class of type Mage_Catalog_Model_Resource_Eav_Mysql4_Setup
+					Passes 'core_setup' as a connection 'type' :)
+				-->
+				<!--<class>Mage_Eav_Model_Entity_Setup</class>
+			</setup>
+			<connection>
+				<use>core_setup</use>
+			</connection>                
+		</deposit_setup> 			
+			   
+	</resources> -->
+	<resources>
+		<deposit_setup>
+			<setup>
+				<module>Octopus_Deposit</module>
+			</setup>
+			<connection>
+				<use>core_setup</use>
+			</connection>
+		</deposit_setup>
+		<deposit_write>
+			<connection>
+			  <use>core_write</use>
+			</connection>
+		</deposit_write>
+		<deposit_read>
+		   <connection>
+			<use>core_read</use>
+		  </connection>
+		</deposit_read>
+	</resources>	  
+  </global>
+</config>

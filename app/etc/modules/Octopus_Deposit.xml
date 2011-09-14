@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Octopus_Deposit>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Octopus_Deposit>
+    </modules>
+</config>
