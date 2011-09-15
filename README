@@ -2,7 +2,18 @@ This is ALPHA and considered VERY UNSTABLE!!!!
 
 The project is to create a Deposit Module for Magento.
 
-Currently there is a little bit of code still in the Magento Core which needs to be repackaged into the module. Tried using event listeners but have been unable to setPrice data to the quote table. ANother way would be to override the Model - but would perfer to use a listener.
+It overrides the custom price (as the deposit price) yet keeps the original price.
+
+Tested on Magento 1.5.1.0 with the following product types:
+virtual
+configurable
+simple
+
+To Do:
+Add backend properties
+Allow admin to set when the rest of the money has come in
+
+and any other suggestions!
 
 Andrew
 andy@octopus-it.com
