@@ -1,0 +1,13 @@
+<layout version="1.0">
+    <checkout_cart_index>
+		<reference name="checkout.cart">
+			<action method="setCartTemplate"><value>octopus/deposit/checkout/cart.phtml</value></action>
+			<action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
+			<action method="chooseTemplate"/>
+			<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>octopus/deposit/checkout/cart/item/default.phtml</template></action>
+			<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>octopus/deposit/checkout/cart/item/default.phtml</template></action>
+			<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>octopus/deposit/checkout/cart/item/default.phtml</template></action>
+			<action method="addItemRender"><type>virtual</type><block>checkout/cart_item_renderer</block><template>octopus/deposit/checkout/cart/item/default.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+</layout>

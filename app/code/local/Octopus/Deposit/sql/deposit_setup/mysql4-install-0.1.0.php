@@ -34,14 +34,14 @@ $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
 
 
 $setup->addAttribute('catalog_product', 'octopus_deposit', array(
-       			'is_html_allowed_on_front'=> true,
+       			'is_html_allowed_on_front'=> false,
 				'backend'       => '',
 				'source'        => '',
 				'entity_model'	=> 'catalog/product',
 				'label'         => 'Deposit',
 				'group'			=> 'Prices',
 				'input'         => 'text',
-				'type'			=> 'price',
+				'type'			=> 'decimal',
 				'is_html_allowed_on_front' => false,
 				'global'        => true,
 				'visible'       => true,

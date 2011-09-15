@@ -3,42 +3,38 @@
 <config>
 	<modules>
         <Octopus_Deposit>
-            <version>0.1.4</version>
+            <version>0.1.0</version>
         </Octopus_Deposit>
     </modules>
-
+	<frontend>
+		<layout>
+			<updates>
+				<Octopus_Deposit>
+					<file>octopus_deposit.xml</file>
+				</Octopus_Deposit>
+			</updates>
+		</layout>
+	</frontend>
 	
   <global>
-    <!--<models>
-        <octopusdeposit>
-          <class>Octopus_Deposit_Model</class>
-        </octopusdeposit>		
-    </models>-->
 	<models>
 		<deposit>
 			<class>Octopus_Deposit_Model</class>
 		</deposit>
     </models>
 	
-	<!--<resources>
-		<deposit_setup>
-			<setup>
-				<module>Octopus_Deposit</module>-->
-				<!-- 
-					Points to
-					app/code/local/Octopus/EntityExtender/sql/entityextender_setup/mysql4-install-0.1.0.php
-					
-					Sets mysql4-install-0.1.0.php to be a class of type Mage_Catalog_Model_Resource_Eav_Mysql4_Setup
-					Passes 'core_setup' as a connection 'type' :)
-				-->
-				<!--<class>Mage_Eav_Model_Entity_Setup</class>
-			</setup>
-			<connection>
-				<use>core_setup</use>
-			</connection>                
-		</deposit_setup> 			
-			   
-	</resources> -->
+	<events>
+	  <checkout_cart_product_add_after>
+	     <observers>
+          <octopus_deposit_sales_observer>
+            <type>singleton</type>
+            <class>Octopus_Deposit_Model_Sales_Observer</class>
+            <method>sales_quote_item_booking</method>
+          </octopus_deposit_sales_observer>
+        </observers>
+	  </checkout_cart_product_add_after>
+    </events>
+	
 	<resources>
 		<deposit_setup>
 			<setup>
