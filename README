@@ -4,13 +4,20 @@ The project is to create a Deposit Module for Magento.
 
 It overrides the custom price (as the deposit price) yet keeps the original price.
 
-Tested on Magento 1.5.1.0 with the following product types:
+Tested on Magento 1.5.1.0 and 1.6.2 with the following product types:
 virtual
 configurable
 simple
 
+These Payment Gateways:
+Check (Cheque)
+Saved CC
+SagePay
+CardSave
+
 To Do:
 Add backend properties
+Allow a percentage deposit
 Allow admin to set when the rest of the money has come in
 
 and any other suggestions!

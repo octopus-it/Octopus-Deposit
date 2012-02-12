@@ -3,7 +3,7 @@
 <config>
 	<modules>
         <Octopus_Deposit>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </Octopus_Deposit>
     </modules>
 	<frontend>
@@ -21,24 +21,59 @@
 		<deposit>
 			<class>Octopus_Deposit_Model</class>
 		</deposit>
+		<sales>
+          <rewrite>
+            <order>Octopus_Deposit_Model_Sales_Order</order>
+          </rewrite>
+		</sales>
     </models>
 	
 	<events>
-	  <checkout_cart_product_add_after>
+	  <sales_quote_add_item>
 	     <observers>
           <octopus_deposit_sales_observer>
             <type>singleton</type>
             <class>Octopus_Deposit_Model_Sales_Observer</class>
-            <method>sales_quote_item_booking</method>
+            <method>sales_quote_item_deposit</method>
           </octopus_deposit_sales_observer>
         </observers>
-	  </checkout_cart_product_add_after>
+	  </sales_quote_add_item>
+	  
+	  <sales_convert_quote_item_to_order_item>
+        <observers>
+          <octopus_deposit_sales_observer>
+            <type>singleton</type>
+            <class>Octopus_Deposit_Model_Sales_Observer</class>
+            <method>sales_convert_quote_item_to_order_item_deposit</method>
+          </octopus_deposit_sales_observer>
+        </observers>
+      </sales_convert_quote_item_to_order_item> 
+	  
+	  <sales_order_status_after>
+        <observers>
+          <octopus_deposit_sales_observer>
+            <type>singleton</type>
+            <class>Octopus_Deposit_Model_Sales_Observer</class>
+            <method>sales_order_status_after_deposit</method>
+          </octopus_deposit_sales_observer>
+        </observers>
+      </sales_order_status_after> 
     </events>
 	
 	<resources>
+		<deposit_sales_setup>
+			<setup>
+				<module>Octopus_Deposit</module>
+				<class>Mage_Sales_Model_Mysql4_Setup</class><!--EDIT: Issue here with setup class -->
+			</setup>
+			<connection>
+				<use>core_setup</use>
+			</connection>
+		</deposit_sales_setup>
 		<deposit_setup>
 			<setup>
 				<module>Octopus_Deposit</module>
+				<class>Mage_Eav_Model_Entity_Setup</class><!--EDIT: Issue here with setup class -->
 			</setup>
 			<connection>
 				<use>core_setup</use>

@@ -47,7 +47,7 @@ $setup->addAttribute('catalog_product', 'octopus_deposit', array(
 				'visible'       => true,
 				'required'      => false,
 				'user_defined'  => false,
-				'default'       => '',
+				'default'       => '0',
 				'visible_on_front' => true,
                   'is_global' => true,
                   'is_visible' => true,
