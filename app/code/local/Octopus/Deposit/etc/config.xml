@@ -6,6 +6,30 @@
             <version>0.2.0</version>
         </Octopus_Deposit>
     </modules>
+	
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <octopus>
+                                            <title>Octopus Deposit</title>
+                                        </octopus>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+	
+	
 	<frontend>
 		<layout>
 			<updates>
@@ -17,6 +41,14 @@
 	</frontend>
 	
   <global>
+  
+  	<!--for Config Tab-->
+    <helpers>
+        <deposit>
+            <class>Octopus_Deposit_Helper</class>
+        </deposit>
+    </helpers> 
+	
 	<models>
 		<deposit>
 			<class>Octopus_Deposit_Model</class>
@@ -58,6 +90,28 @@
           </octopus_deposit_sales_observer>
         </observers>
       </sales_order_status_after> 
+	
+	  <!--NEW: For the Invoice Deposit Amount-->
+	  <sales_order_invoice_register>
+         <observers>
+            <octopus_deposit_sales_observer>
+              <type>singleton</type>
+              <class>Octopus_Deposit_Model_Sales_Observer</class>
+              <method>sales_order_invoice_register_deposit</method>
+            </octopus_deposit_sales_observer>
+          </observers>
+      </sales_order_invoice_register>
+	  
+	  <sales_order_invoice_pay>
+         <observers>
+            <octopus_deposit_sales_observer>
+              <type>singleton</type>
+              <class>Octopus_Deposit_Model_Sales_Observer</class>
+              <method>sales_order_invoice_pay_deposit</method>
+            </octopus_deposit_sales_observer>
+          </observers>
+      </sales_order_invoice_pay>
+	  
     </events>
 	
 	<resources>

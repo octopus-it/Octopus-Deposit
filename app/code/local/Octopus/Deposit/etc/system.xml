@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <tabs>
+        <depositconfig translate="label" module="deposit">
+            <label>Octopus</label>
+            <sort_order>99999</sort_order>
+        </depositconfig>
+	</tabs>
+		
+	<sections>
+		<octopus translate="label" module="deposit">
+			<label>Deposit</label>
+			<tab>depositconfig</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>1000</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>   
+			<groups>
+                <deposit translate="label">
+                    <label>Shopping Cart Deposit</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>  
+					<fields>
+						<shopping_cart_deposit>
+							<label>Percentage Deposit</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>                    
+						</shopping_cart_deposit>
+					</fields>              
+                </deposit>
+            </groups>                 
+		</octopus>
+	  </sections> 
+</config>

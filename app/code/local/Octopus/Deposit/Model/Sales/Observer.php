@@ -85,4 +85,45 @@ class Octopus_Deposit_Model_Sales_Observer
 
 		return $this;
 	}
+	
+	public function sales_order_invoice_register_deposit($observer)
+	{
+		$order = $observer->getEvent()->getOrder();
+		//echo 'sales_order_invoice_register_deposit';
+		
+		//$order->setTotalInvoiced(20.000);
+		
+		//echo $order->setBaseGrandTotal('20.000');
+		
+		//var_dump($order);
+		//die();
+	}
+	
+	public function sales_order_invoice_pay_deposit($observer)
+	{
+		//$event = $observer->getEvent();
+		//echo 'sales_order_invoice_pay_deposit';
+		//var_dump($event);
+		
+		$invoice = $observer->getEvent ()->getInvoice ();
+		
+		//echo $invoice->getOrder()->getBaseTotalPaid();
+		
+		if(Mage::getStoreConfig('octopus/deposit/shopping_cart_deposit')=='' or Mage::getStoreConfig('octopus/deposit/shopping_cart_deposit')==0) {
+			$invoice->getOrder()->setTotalPaid(
+				$invoice->getOrder()->getTotalPaid()+$invoice->getGrandTotal()
+			);
+			$invoice->getOrder()->setBaseTotalPaid(
+				$invoice->getOrder()->getBaseTotalPaid()+$invoice->getBaseGrandTotal()
+			);
+		} else {
+			$invoice->getOrder()->setTotalPaid(
+				( $invoice->getOrder()->getTotalPaid()+$invoice->getGrandTotal() )/ Mage::getStoreConfig('octopus/deposit/shopping_cart_deposit')
+			);
+			$invoice->getOrder()->setBaseTotalPaid(
+				( $invoice->getOrder()->getBaseTotalPaid()+$invoice->getBaseGrandTotal() )/ Mage::getStoreConfig('octopus/deposit/shopping_cart_deposit')
+			);
+		}
+			
+	}
 }
