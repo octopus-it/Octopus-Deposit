@@ -30,7 +30,7 @@ class Octopus_Deposit_Model_Sales_Observer
 		$productPrice = $quoteItem->getProduct()->getPrice();
 		
 		// If there is a depoist value, use it
-		if($octopusDeposit > 0) {
+		if($octopusDeposit > 0 and $quoteItem->getParentItemId() == NULL) {
 			
 			if($octopusDepositIspercentage == 0) { // Use absolute price
 				$octopusDepositPrice = $octopusDeposit;

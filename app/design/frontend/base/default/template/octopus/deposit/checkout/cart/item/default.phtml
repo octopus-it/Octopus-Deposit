@@ -68,7 +68,8 @@ $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     <td class="a-center">
         <?php if ($isVisibleProduct): ?>
         	<?php if ($_item->getProduct()->getId() != 6): //Edit: Added by Andy Needs work - makes input hidden for most jumps otherwise need to show booking form ?>
-        		<a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item parameters') ?>"><?php echo $this->__('Edit') ?></a>
+        		<!--<a href="<?php /*echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item parameters') ?>"><?php echo $this->__('Edit') */?></a>-->
+				<?php if($_item->getBookingDatetime() != "0000-00-00 00:00:00") { echo date( "d/m/Y h:ia",strtotime( $_item->getBookingDatetime() ) ); } ?>
             <?php endif; ?>
         <?php endif ?>
     </td>
@@ -260,5 +261,5 @@ $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     	<?php //echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) //HERE WE ADD FUNKY CALCS EDIT: ANDY ?>
         <?php echo $this->helper('checkout')->formatPrice($_item->getQty() * $_item->getOriginalPrice() - $_item->getRowTotal()) //HERE WE ADD FUNKY CALCS EDIT: ANDY ?>
     </td>
-    <td class="a-center"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove item')?></a></td>
+    <td class="a-center"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-removeOLD btn-remove2OLD"><?php echo $this->__('Remove item')?></a></td>
 </tr>
